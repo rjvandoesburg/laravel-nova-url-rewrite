@@ -36,8 +36,8 @@ class NovaUrlRewriteServiceProvider extends ServiceProvider
             return new UrlRewriteRepository($model);
         });
 
-        $this->app->singleton(UrlRewriteBuilderContract::class, function ($app) use ($model) {
-            return new UrlRewriteBuilder($model);
+        $this->app->bind(UrlRewriteBuilderContract::class, function ($app) use ($model) {
+            return new UrlRewriteBuilder($this->app->make(UrlRewriteRepositoryContract::class), $model);
         });
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'nova_url_rewrite');
