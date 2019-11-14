@@ -1,0 +1,31 @@
+{
+    "name": "rjvandoesburg/laravel-nova-url-rewrite",
+    "description": "Add rewrites to your Nova powered application",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert-John van Doesburg",
+            "email": "rjvandoesburg@guapa.nl"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "~5.8||^6.0",
+        "laravel/nova": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rjvandoesburg\\NovaUrlRewrite\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rjvandoesburg\\NovaUrlRewrite\\NovaUrlRewriteServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
