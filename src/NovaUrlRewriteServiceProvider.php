@@ -19,6 +19,10 @@ class NovaUrlRewriteServiceProvider extends ServiceProvider
             __DIR__.'/../config/url_rewrite.php',
             'url_rewrite'
         );
+
+        $this->commands([
+            Console\RegenerateCommand::class,
+        ]);
     }
 
     /**

@@ -119,7 +119,7 @@ class UrlRewriteRepository implements UrlRewriteRepositoryContract
     /**
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
-    protected function getModelQuery()
+    public function getModelQuery()
     {
         return $this->model->newQueryWithoutScopes();
     }

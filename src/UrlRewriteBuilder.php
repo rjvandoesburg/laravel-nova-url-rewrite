@@ -259,4 +259,36 @@ class UrlRewriteBuilder implements UrlRewriteBuilderContract
             return $urlRewrite;
         });
     }
+
+    /**
+     * @param  \Rjvandoesburg\NovaUrlRewrite\Models\UrlRewrite  $urlRewrite
+     *
+     * @return bool
+     * @throws \Rjvandoesburg\NovaUrlRewrite\Exceptions\UrlRewriteBuilderException
+     */
+    public function regenerate(UrlRewrite $urlRewrite): bool
+    {
+        if (empty($urlRewrite->resource_type) && $urlRewrite->model === null) {
+            return false;
+        }
+
+        if (! empty($urlRewrite->resource_type) && class_exists($urlRewrite->resource_type)) {
+            $this->resource(new $urlRewrite->resource_type(null));
+        }
+
+        if ($urlRewrite->model !== null) {
+            $this->model($urlRewrite->model);
+        }
+
+        if (empty($targetPath = $this->getTargetPath())) {
+            throw new UrlRewriteBuilderException(__('Error while generating the target path for [:id - :path]', [
+                'id'   => $urlRewrite->getKey(),
+                'path' => $urlRewrite->request_path,
+            ]));
+        }
+
+        return $urlRewrite->update([
+            'target_path' => $this->getTargetPath(),
+        ]);
+    }
 }

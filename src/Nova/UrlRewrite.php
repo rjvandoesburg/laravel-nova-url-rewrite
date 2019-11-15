@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Rjvandoesburg\NovaUrlRewrite\Nova\Actions\Regenerate;
 use Rjvandoesburg\NovaUrlRewrite\Nova\Filters\RedirectTypeFilter;
 use Rjvandoesburg\NovaUrlRewrite\Rules\UniqueRequestPath;
 
@@ -99,6 +100,19 @@ class UrlRewrite extends Resource
     {
         return [
             new RedirectTypeFilter,
+        ];
+    }
+
+    /**
+     * Get the actions available on the entity.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function actions(Request $request): array
+    {
+        return [
+            new Regenerate
         ];
     }
 }

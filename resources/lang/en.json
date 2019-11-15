@@ -5,5 +5,7 @@
   "Description": "Description",
   "Created at": "Created at",
   "Updated at": "Updated at",
-  "URL rewrite redirect type": "URL rewrite redirect type"
+  "URL rewrite redirect type": "URL rewrite redirect type",
+  ":count rewrites regenerated, :failed failed. See logs for more details": ":count rewrites regenerated, :failed failed. See logs for more details",
+  ":count rewrites regenerated": ":count rewrites regenerated"
 }

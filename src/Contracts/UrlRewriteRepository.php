@@ -64,6 +64,11 @@ interface UrlRewriteRepository
     public function delete(int $id): bool;
 
     /**
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
+     */
+    public function getModelQuery();
+
+    /**
      * @return \Rjvandoesburg\NovaUrlRewrite\Contracts\UrlRewriteBuilder
      */
     public function getRewriteBuilder(): UrlRewriteBuilderContract;

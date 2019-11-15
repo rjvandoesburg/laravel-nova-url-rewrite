@@ -16,6 +16,8 @@ use Illuminate\Support\Arr;
  * @property string $target_path
  * @property int $redirect_type
  * @property null|string $description
+ * @property null|string $model_type
+ * @property null|int $model_id
  * @property \Illuminate\Database\Eloquent\Model|null $model
  * @property null|string $resource_type
  * @property \Carbon\Carbon $created_at
