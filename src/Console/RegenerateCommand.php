@@ -15,7 +15,6 @@ class RegenerateCommand extends Command
      * @var string
      */
     protected $signature = 'nova-url-rewrite:regenerate {id? : Id of the url to regenerate}
-    {--a|all : Rewrite all urls}
     {--g|group=0 : The group to rewrite}';
 
     /**
@@ -58,7 +57,6 @@ class RegenerateCommand extends Command
             return;
         }
 
-        $rewriteAll = $this->option('all');
         $group = $this->option('group');
 
         $query = $this->repository->getModelQuery()

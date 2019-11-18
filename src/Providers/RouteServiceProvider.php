@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
             $nova = ltrim(config('nova.path'), '/');
             $pattern = "^(?!{$nova}|nova-api).*$";
 
-            Route::any('/{request_path?}', UrlRewriteController::class)
+            Route::any('/{request_path}', UrlRewriteController::class)
                 ->where('request_path', $pattern);
         });
     }

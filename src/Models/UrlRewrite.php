@@ -4,6 +4,7 @@ namespace Rjvandoesburg\NovaUrlRewrite\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Laravel\Nova\Resource;
 
 /**
  * Class UrlRewrite
@@ -19,6 +20,7 @@ use Illuminate\Support\Arr;
  * @property null|string $model_type
  * @property null|int $model_id
  * @property \Illuminate\Database\Eloquent\Model|null $model
+ * @property \Laravel\Nova\Resource|null $resource
  * @property null|string $resource_type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -64,6 +66,18 @@ class UrlRewrite extends Model
     public function model(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @return \Laravel\Nova\Resource|null
+     */
+    public function getResourceAttribute(): ?\Laravel\Nova\Resource
+    {
+        if (empty($this->resource_type) || ! class_exists($this->resource_type)) {
+            return null;
+        }
+
+        return new $this->resource_type($this->model);
     }
 
     /**
