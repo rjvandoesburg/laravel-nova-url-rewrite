@@ -181,7 +181,7 @@ $resource = new \App\Nova\Product($product);
 $builder->requestPath('/apple-airpods')
         ->group(0) // Defaults to 0
         ->resource($resource)
-        ->unique(UrlRewrite)
+        ->unique()
         ->redirectType(\Rjvandoesburg\NovaUrlRewrite\Models\UrlRewrite::FORWARD)
         ->model($product) // This is redundant as the model is bound to the resource
         ->description('Landing page for the NEW apple airpods');
